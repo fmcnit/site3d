@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+    list-style: none;
+
+}
+
+body{
+    
+    color: #fff;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+header{
+    
+    position: fixed;
+    width: 80vw;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: 1fr 600px;
+    gap: 8%;
+    align-items: center;
+    z-index: 2;
+
+    & img{
+        width: 250px;
+
+    }
+
+    & nav{
+        & ul{
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+        }
+    }
+}
+
+section {
+   
+    background-image: radial-gradient(circle, rgba(100,219,209,1) 9%, rgba(0,212,255,1) 48%, rgba(121,119,144,1) 100%);
+    height: 100vh;
+    position: relative;
+
+    & .list{
+        width: 70vw;
+        margin: auto;
+        height: 100%;
+        position: relative;
+
+        & .item {
+            position: absolute;
+            inset: 0;
+            
+            & .car-img {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 70%;
+
+                & img{
+                    width: 85%;
+                    transform: rotate(-30deg);
+                }
+            }
+
+            & .content{
+                position: absolute;
+                right: 100px;
+                width: 70%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: end;
+                gap: 10px;
+
+                & .car-information{
+                    font-weight: bold;
+                    
+                }
+
+                & h2{
+                    font-size: 5.5em;
+                    line-height: 1em;
+                    margin-top: 50px;
+                }
+
+                & .description{
+                    color: #fff;
+                    text-align: right;
+                    max-width: 350px;
+                
+
+                }
+
+                & .information{
+                    border-radius: 30px;
+                    height: 35px;
+                    width: 130px;
+                    text-transform: uppercase;
+                    border: 2px solid rgb(255, 255, 255);
+                    cursor: pointer;
+                    font-weight: bold;
+                    
+                }
+
+            }
+
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            height: 200px;
+            width: 100%;
+            top: 50%;
+            border-top: 1px solid #fff;
+
+            
+        }
+    }
+
+    .arrows{
+        width: 70vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -25px);
+        display: flex;
+        justify-content: space-between;
+
+        & button:nth-child(1){
+            & img {
+                transform: scale(-1);
+            }
+        }
+
+        & button{
+            display: flex;
+            top: 60%;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        
+
+
+            & img{
+                width: 70%;
+                margin-top: 2px;
+            }
+
+            
+        }
+        & button:hover {
+                background-color: rgb(98, 98, 228);
+            }
+    }
+
+    .indicators{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 200px;
+        width: 90vw;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        gap: 20px;
+
+        & .number{
+            font-size: 5em;
+
+        }
+
+        & ul{
+            display: flex;
+            gap: 10px;
+
+            & li{
+                width: 50px;
+                height: 5px;
+                background-color: white;
+                border-radius: 5px;
+
+            }
+
+            & .active{
+                background-color: rgb(98, 98, 228);
+            }
+        }
+    }
+}
+
+section{
+
+    & .list{
+
+        --calculation: 0;
+
+        & .item{
+            transform: translateX(calc(100vw * var(--calculation)));
+            transition: 0.5s;
+            opacity: 0;
+
+            & .car-img{
+
+                & img{
+                    transform: rotate(0);
+                    transition: 0.5s;
+                    transition-delay: 0.3s;
+                }
+
+            }
+
+            & .content{
+                & .car-information, h2, .description, .information{
+                    transform: translateX(calc(200px * var(--calculation)));
+                    transition: 0.7s;
+                    transition-delay: 0.3s;
+
+                }
+
+                & h2{
+                    transition-delay: 0.3s;
+                    
+                }
+                & .description{
+                    transition-delay: 0.5s;
+                }
+
+            }
+        }
+
+        & .active{
+            transform: translateX(0);
+            transition: 0.5s;
+            opacity: 1;
+
+            & .content{
+                & .car-information, h2, .description, .information{
+                    transform: translateX(0px);
+                }
+
+            }
+
+            & .car-img{
+
+                & img{
+                    transform: rotate(-20deg);
+                
+                }
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 840px){
+
+    header {
+        & nav {
+            & ul {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                max-width: 120px;
+                margin-top: 15px;
+                align-items: end;
+            }
+        }
+    }
+
+    section {
+        & .list {
+            & .item {
+
+                & .car-img {
+                    width: 100%;
+
+                    & img {
+                        width: 85%;
+                        transform: rotate(-30deg);
+                    }
+                }
+
+                & .content {
+                    & h2 {
+                        font-size: 2.5em;
+                        
+                    }
+
+                    & .description{
+                        max-width: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    section {
+        .indicators {
+        
+            top: 65%;
+        }
+    }
+}
+
+
+
+
+
+
